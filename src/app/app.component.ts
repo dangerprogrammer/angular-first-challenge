@@ -5,7 +5,8 @@ import { DOCUMENT } from '@angular/common';
   selector: 'app-root',
   standalone: true,
   imports: [],
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
 
 class AppComponent implements OnInit {

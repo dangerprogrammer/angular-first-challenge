@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+}
+
+.canvas {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 3%;
+}
+
+#file-input {
+    z-index: 1;
+    position: relative;
+    left: 52%;
+    transform: translateX(-52%);
+    font-size: 15px;
+}
+
+#three-canvas{
+    position: relative;
+    height: 100% !important;
+    width: 100% !important;
+    z-index: 10;
+}
