@@ -1,26 +1,21 @@
-body {
+* {
     margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
 }
 
-.canvas {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 3%;
+body {
+    min-height: 100vh;
 }
 
-#file-input {
-    z-index: 1;
+.main-page {
     position: relative;
-    left: 52%;
-    transform: translateX(-52%);
-    font-size: 15px;
-}
-
-#three-canvas{
-    position: relative;
-    height: 100% !important;
-    width: 100% !important;
-    z-index: 10;
+    display: flex;
+    inset: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #111;
+    color: #eee;
 }

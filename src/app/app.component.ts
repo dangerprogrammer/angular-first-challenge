@@ -1,10 +1,13 @@
 import { Component, Renderer2, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { AppHeaderComponent } from './app-header/app-header.component';
+import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
+import { MainContentComponent } from './main-content/main-content.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [],
+  imports: [AppHeaderComponent, LeftSidebarComponent, MainContentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
