@@ -32,7 +32,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              {"input": "bundle.js", "inject": true, "bundleName": "bundle"}
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
