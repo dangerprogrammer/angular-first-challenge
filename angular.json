@@ -32,7 +32,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "./render.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
