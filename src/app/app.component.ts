@@ -1,17 +1,14 @@
 import { Component } from '@angular/core';
-import { AppHeaderComponent } from './app-header/app-header.component';
-import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
-import { MainContentComponent } from './main-content/main-content.component';
+import { RouterOutlet } from '@angular/router';
+import * as THREE from 'three';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [AppHeaderComponent, LeftSidebarComponent, MainContentComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-
-class AppComponent {
+export class AppComponent {
+  title = 'angular-challenge';
 }
-
-export { AppComponent };
