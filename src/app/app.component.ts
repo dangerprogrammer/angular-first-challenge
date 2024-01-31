@@ -4,7 +4,6 @@ import { AppHeaderComponent } from './app-header/app-header.component';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { MainContentComponent } from './main-content/main-content.component';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
