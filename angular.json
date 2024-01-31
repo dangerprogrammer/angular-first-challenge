@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "aot": true,
             "outputPath": "dist/angular-challenge",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -27,12 +28,19 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./wasm",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "./bundle.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {

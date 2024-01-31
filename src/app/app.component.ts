@@ -1,5 +1,4 @@
-import { Component, Renderer2, OnInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component } from '@angular/core';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { MainContentComponent } from './main-content/main-content.component';
@@ -12,21 +11,8 @@ import { MainContentComponent } from './main-content/main-content.component';
   styleUrl: './app.component.scss'
 })
 
-class AppComponent implements OnInit {
+class AppComponent {
   title = 'angular-challenge';
-
-    constructor(
-        private _renderer2: Renderer2, 
-        @Inject(DOCUMENT) private _document: Document
-    ) { }
-
-    public ngOnInit() {
-
-        let script = this._renderer2.createElement('script');
-        script.src = 'https://ifc-js-viewer.vercel.app/bundle.js';
-
-        this._renderer2.appendChild(this._document.body, script);
-    }
 }
 
 export { AppComponent };
