@@ -1,39 +1,141 @@
 import * as THREE from 'three';
-import * as OBC from "openbim-components";
+import * as OBC from 'openbim-components';
+import * as WEBIFC from 'web-ifc';
+
+/*
+    const container = document.getElementById('container');
+
+    const components = new OBC.Components();
+
+    components.scene = new OBC.SimpleScene(components);
+    components.renderer = new OBC.PostproductionRenderer(components, container);
+    components.camera = new OBC.SimpleCamera(components);
+    components.raycaster = new OBC.SimpleRaycaster(components);
+
+    components.init();
+
+    components.renderer.postproduction.enabled = true;
+
+    const scene = components.scene.get();
+
+    components.camera.controls.setLookAt(12, 6, 8, 0, 0, -10);
+
+    components.scene.setup();
+
+    const grid = new OBC.SimpleGrid(components, new THREE.Color(0x666666));
+    const customEffects = components.renderer.postproduction.customEffects;
+    customEffects.excludedMeshes.push(grid.get());
+
+    let fragments = new OBC.FragmentManager(components);
+    let fragmentIfcLoader = new OBC.FragmentIfcLoader(components);
+
+    const mainToolbar = new OBC.Toolbar(components, { name: 'Main Toolbar', position: 'bottom' });
+    components.ui.addToolbar(mainToolbar);
+    const ifcButton = fragmentIfcLoader.uiElement.get("main");
+    mainToolbar.addChild(ifcButton);
+
+    await fragmentIfcLoader.setup()
+
+    const excludedCats = [
+        WEBIFC.IFCTENDONANCHOR,
+        WEBIFC.IFCREINFORCINGBAR,
+        WEBIFC.IFCREINFORCINGELEMENT,
+    ];
+
+    for(const cat of excludedCats) {
+        fragmentIfcLoader.settings.excludedCategories.add(cat);
+    }
+
+    fragmentIfcLoader.settings.webIfc.COORDINATE_TO_ORIGIN = true;
+    fragmentIfcLoader.settings.webIfc.OPTIMIZE_PROFILES = true;
+
+    async function loadIfcAsFragments() {
+        const file = await fetch('../../../resources/small.ifc');
+        const data = await file.arrayBuffer();
+        const buffer = new Uint8Array(data);
+        const model = await fragmentIfcLoader.load(buffer, "example");
+        scene.add(model);
+    }
+
+    async function exportFragments() {
+        if (!fragments.groups.length) return;
+        const group = fragments.groups[0];
+        const data = fragments.export(group);
+        const blob = new Blob([data]);
+        const fragmentFile = new File([blob], 'small.frag');
+
+        const files = [];
+        files.push(fragmentFile);
+        files.push(new File([JSON.stringify(group.properties)], 'small.json'));
+        const result = await downloadZip(files).blob();
+        result.name = 'example';
+        download(result);
+    }
+
+    function download(file) {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(file);
+        link.download = file.name;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+    }
+
+    function disposeFragments() {
+        fragments.dispose();
+    }
+
+    const stats = new Stats();
+    stats.showPanel(2);
+    document.body.append(stats.dom);
+    stats.dom.style.left = '0px';
+    const renderer = components.renderer;
+    renderer.onBeforeUpdate.add(() => stats.begin());
+    renderer.onAfterUpdate.add(() => stats.end());
+
+    const settings = {
+        loadFragments: () => loadIfcAsFragments(),
+        exportFragments: () => exportFragments(),
+        disposeFragments: () => disposeFragments(),
+    };
+
+    const gui = new dat.GUI();
+
+    gui.add(settings, 'loadFragments').name('Import fragments');
+    gui.add(settings, 'exportFragments').name('Export fragments');
+    gui.add(settings, 'disposeFragments').name('Dispose fragments');
+
+    fragmentIfcLoader.onIfcLoaded.add((model) => {
+
+        console.log(model);
+    });
+*/
 
 function render() {
-    const scene: THREE.Scene = new THREE.Scene();
-    const camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer();
+    const container: HTMLElement | null = document.getElementById('container');
+    const components = new OBC.Components();
 
-    camera.position.z = 5;
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    components.scene = new OBC.SimpleScene(components);
+    return;
+/**
+    components.renderer = new OBC.PostproductionRenderer(components, container);
+    components.camera = new OBC.SimpleCamera(components);
+    components.raycaster = new OBC.SimpleRaycaster(components);
 
-    document.body.appendChild(renderer.domElement);
+    components.init();
 
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x2000ff });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-    
-    animate();
+    components.renderer.postproduction.enabled = true;
 
-    window.addEventListener("resize", resize, false);
+    const scene = components.scene.get();
 
-    function resize() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    };
+    components.camera.controls.setLookAt(12, 6, 8, 0, 0, -10);
 
-    function animate() {
-        requestAnimationFrame( animate );
-    
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-    
-        renderer.render( scene, camera );
-    };
+    components.scene.setup();
+
+    const grid = new OBC.SimpleGrid(components, new THREE.Color(0x666666));
+    const customEffects = components.renderer.postproduction.customEffects;
+    customEffects.excludedMeshes.push(grid.get());
+ */
 };
 
 export { render };
