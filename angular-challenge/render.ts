@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import * as OBC from "openbim-components";
 
 function render() {
     const scene: THREE.Scene = new THREE.Scene();
@@ -11,9 +12,13 @@ function render() {
     document.body.appendChild(renderer.domElement);
 
     const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const material = new THREE.MeshBasicMaterial({ color: 0x2000ff });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
+    
+    animate();
+
+    function 
 
     function animate() {
         requestAnimationFrame( animate );
@@ -22,9 +27,7 @@ function render() {
         cube.rotation.y += 0.01;
     
         renderer.render( scene, camera );
-    }
-    
-    animate();
+    };
 };
 
 export { render };
