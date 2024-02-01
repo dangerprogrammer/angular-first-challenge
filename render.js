@@ -7,6 +7,7 @@ const input = document.getElementById("file-input");
 const headerTitle = document.querySelector('#header-title');
 const titleDesc = document.querySelector('#desc-title');
 const originLeftSidebar = document.querySelector('left-sidebar');
+const leftSidebar = document.querySelector('.left-sidebar');
 
 let isLoading = !1;
 addEventListener("dragover", ev => {
@@ -28,7 +29,6 @@ addEventListener("drop", ev => {
 
     if (!isLoading) renderFile(file);
 });
-
 
 input.addEventListener("change", changed => {
     const file = changed.target.files[0];
@@ -75,10 +75,29 @@ function renderFile(file) {
         scene.add(ifcModel);
 
         isLoading = !1;
-        console.log(ifcModel);
+        
+        ifcModel.material.forEach(generateMesh);
+
         originLeftSidebar.classList.remove("hidden");
         mainContent.classList.remove("loading-archive");
         mainContent.classList.remove("no-archive");
         mainContent.classList.add("has-archive");
     };
+
+    function generateMesh(mesh, ind) {
+        const mainMesh = createElement('div', { className: 'main-mesh' });
+        const innerMesh = createElement('div', { className: 'inner-mesh', innerText: mesh.uuid });
+
+        mainMesh.appendChild(innerMesh);
+        leftSidebar.appendChild(mainMesh);
+        console.log(mesh.name);
+    };
+};
+
+function createElement(elem, attr) {
+    const element = document.createElement(elem);
+
+    if (attr) for (const att in attr) element[att] = attr[att];
+
+    return element;
 };
