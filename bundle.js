@@ -38089,7 +38089,7 @@ var require_web_ifc = __commonJS({
 							return tty.input.shift();
 						}, put_char: function (tty, val) {
 							if (val === null || val === 10) {
-								out(UTF8ArrayToString(tty.output, 0));
+								// out(UTF8ArrayToString(tty.output, 0));
 								tty.output = [];
 							} else {
 								if (val != 0)

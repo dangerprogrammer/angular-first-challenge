@@ -25,9 +25,11 @@
     </div>
   </section>
   <div [className]="'loading'">
-    @for (str of loadingText; track $index) {
-      <span [style]="{'--delay': $index}">{{ str }}</span>
-    }
+    <section [className]="'loop'">
+      @for (str of loadingText; track $index) {
+        <span [style]="{'--delay': $index}">{{ str }}</span>
+      }
+    </section>
   </div>
   <div [className]="'error'">
       <span>Erro!</span>

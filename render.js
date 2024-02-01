@@ -35,10 +35,8 @@ input.addEventListener("change", changed => {
 }, false);
 
 function renderFile(file) {
-    isLoading = !0;
-    mainContent.classList.add("loading-archive");
-
-    const isError = !file.name.endsWith(".ifc");
+    const typeFile = ".ifc";
+    const isError = !file || !file.name.endsWith(typeFile);
 
     if (isError) {
         mainContent.classList.remove('no-archive');
@@ -56,19 +54,27 @@ function renderFile(file) {
         };
         setTimeout(() => location.reload(), timingSeconds * 1e3);
     } else {
+        isLoading = !0;
+        mainContent.classList.add("loading-archive");
+        
+        headerTitle.innerText = "Loading...";
+
         var ifcURL = URL.createObjectURL(file);
 
-        ifcLoader.load(ifcURL, ifcModel => {
-            scene.add(ifcModel);
+        ifcLoader.load(ifcURL, loadFile);
+    };
 
-            isLoading = !1;
-            console.log(ifcModel);
-            console.log(file);
-            headerTitle.innerText = 'Opa';
-            mainContent.classList.remove("loading-archive");
-            mainContent.classList.remove("no-archive");
-            mainContent.classList.add("has-archive");
+    function loadFile(ifcModel) {
+        const fileName = file.name.slice(0, file.name.length - typeFile.length);
 
-        });
+        scene.add(ifcModel);
+
+        isLoading = !1;
+        console.log(ifcModel);
+        console.log(file);
+        headerTitle.innerText = fileName;
+        mainContent.classList.remove("loading-archive");
+        mainContent.classList.remove("no-archive");
+        mainContent.classList.add("has-archive");
     };
 };

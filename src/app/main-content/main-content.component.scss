@@ -168,11 +168,16 @@
 .loading {
     font-family: 'Roboto Mono';
     transition: opacity 1s ease-in-out;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    span {
-        animation: animateLoading 2s calc(var(--delay) * .1s) infinite;
+    .loop {
+        display: flex;
+
+        span {
+            animation: animateLoading 2s calc(var(--delay) * .1s) infinite;
+        }
     }
 }
 
