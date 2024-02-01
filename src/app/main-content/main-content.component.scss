@@ -25,7 +25,14 @@
     }
 }
 
-.drag-archive, .loading {
+.main-content:not(.error-archive) {
+    .error {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.drag-archive, .loading, .error {
     position: absolute;
     inset: 0;
     user-select: none;
@@ -160,7 +167,6 @@
 
 .loading {
     font-family: 'Roboto Mono';
-    background: #000a;
     transition: opacity 1s ease-in-out;
     align-items: center;
     justify-content: center;
@@ -168,6 +174,12 @@
     span {
         animation: animateLoading 2s calc(var(--delay) * .1s) infinite;
     }
+}
+
+.error {
+    align-items: center;
+    justify-content: center;
+    color: red;
 }
 
 @keyframes animateLoading {

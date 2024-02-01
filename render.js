@@ -1,7 +1,6 @@
 const ifcLoader = new IFCLoader();
 ifcLoader.ifcManager.setWasmPath("assets/");
 
-const mainContent = document.querySelector('.main-content');
 const dragArchive = document.querySelector('.drag-archive');
 
 let isLoading = !1;
@@ -40,8 +39,9 @@ function renderFile(file) {
 
     ifcLoader.load(ifcURL, ifcModel => {
         scene.add(ifcModel);
-        console.log(ifcModel);
+        
         isLoading = !1;
+        console.log(ifcModel);
         mainContent.classList.remove("loading-archive");
         mainContent.classList.remove("no-archive");
         mainContent.classList.add("has-archive");
