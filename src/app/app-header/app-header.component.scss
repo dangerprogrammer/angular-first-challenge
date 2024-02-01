@@ -12,6 +12,8 @@
 
     .brand-header {
         font-weight: 700;
+        pointer-events: none;
+        user-select: none;
     }
 
     .title-header .desc-title {

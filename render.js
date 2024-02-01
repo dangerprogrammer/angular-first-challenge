@@ -57,15 +57,13 @@ function renderFile(file) {
         setTimeout(() => location.reload(), timingSeconds * 1e3);
     } else {
         const fileName = file.name.slice(0, file.name.length - typeFile.length),
-            descTitle = file.lastModifiedDate.toLocaleString().split(', ').join(' - ');
+            descTitle = file.lastModifiedDate.toLocaleString().split(', ').join(' às ');
 
         isLoading = !0;
         mainContent.classList.add("loading-archive");
         
         titleDesc.innerText = `Última modificação: ${descTitle}`;
         headerTitle.innerText = fileName;
-        
-        console.log(file);
 
         var ifcURL = URL.createObjectURL(file);
 
