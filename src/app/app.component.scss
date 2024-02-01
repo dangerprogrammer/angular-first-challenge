@@ -25,11 +25,18 @@
         padding: 1em;
         grid-area: left-sidebar;
         min-width: max(15em, 15vw);
+
+        &.hidden {
+            display: none !important;
+        }
+    }
+
+    &:not(:has(left-sidebar.hidden)) main-content {
+        border-top-left-radius: 2.5rem;
     }
 
     main-content {
         grid-area: main;
-        border-top-left-radius: 2.5rem;
         background: #33333caa;
     }
 }

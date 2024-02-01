@@ -4,7 +4,8 @@ ifcLoader.ifcManager.setWasmPath("assets/");
 const mainContent = document.querySelector('.main-content');
 const dragArchive = document.querySelector('.drag-archive');
 const input = document.getElementById("file-input");
-const headerTitle = document.querySelector('.app-header');
+const headerTitle = document.querySelector('#header-title');
+const originLeftSidebar = document.querySelector('left-sidebar');
 
 let isLoading = !1;
 addEventListener("dragover", ev => {
@@ -54,10 +55,12 @@ function renderFile(file) {
         };
         setTimeout(() => location.reload(), timingSeconds * 1e3);
     } else {
+        const fileName = file.name.slice(0, file.name.length - typeFile.length);
+
         isLoading = !0;
         mainContent.classList.add("loading-archive");
         
-        headerTitle.innerText = "Loading...";
+        headerTitle.innerText = fileName;
 
         var ifcURL = URL.createObjectURL(file);
 
@@ -65,14 +68,13 @@ function renderFile(file) {
     };
 
     function loadFile(ifcModel) {
-        const fileName = file.name.slice(0, file.name.length - typeFile.length);
 
         scene.add(ifcModel);
 
         isLoading = !1;
         console.log(ifcModel);
         console.log(file);
-        headerTitle.innerText = fileName;
+        originLeftSidebar.classList.remove("hidden");
         mainContent.classList.remove("loading-archive");
         mainContent.classList.remove("no-archive");
         mainContent.classList.add("has-archive");
