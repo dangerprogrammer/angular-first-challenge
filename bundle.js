@@ -3,7 +3,6 @@
  * Copyright 2010-2022 Three.js Authors
  * SPDX-License-Identifier: MIT
  */
-const mainContent = document.querySelector('.main-content');
 const REVISION$1 = '141';
 const MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 };
 const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
@@ -38090,25 +38089,7 @@ var require_web_ifc = __commonJS({
 							return tty.input.shift();
 						}, put_char: function (tty, val) {
 							if (val === null || val === 10) {
-								const isError = UTF8ArrayToString(tty.output, 0) == 'unexpected empty ifc project';
 								out(UTF8ArrayToString(tty.output, 0));
-
-								if (isError) {
-									mainContent.classList.remove('no-archive');
-									mainContent.classList.remove('has-archive');
-									mainContent.classList.remove('loading-archive');
-									mainContent.classList.add('error-archive');
-
-									const errorContainer = document.querySelector('.error');
-									const timingSeconds = 3;
-									errorContainer.innerText = `Erro! Reiniciando em ${timingSeconds}s...`;
-									for (let ind = 1; ind <= timingSeconds; ind++) {
-										setTimeout(() => {
-											errorContainer.innerText = `Erro! Reiniciando em ${timingSeconds - ind}s...`;
-										}, 1e3 * ind);
-									};
-									setTimeout(() => location.reload(), timingSeconds * 1e3);
-								};
 								tty.output = [];
 							} else {
 								if (val != 0)
