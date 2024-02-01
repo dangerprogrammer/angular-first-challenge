@@ -5,6 +5,7 @@ const mainContent = document.querySelector('.main-content');
 const dragArchive = document.querySelector('.drag-archive');
 const input = document.getElementById("file-input");
 const headerTitle = document.querySelector('#header-title');
+const titleDesc = document.querySelector('#desc-title');
 const originLeftSidebar = document.querySelector('left-sidebar');
 
 let isLoading = !1;
@@ -55,12 +56,16 @@ function renderFile(file) {
         };
         setTimeout(() => location.reload(), timingSeconds * 1e3);
     } else {
-        const fileName = file.name.slice(0, file.name.length - typeFile.length);
+        const fileName = file.name.slice(0, file.name.length - typeFile.length),
+            descTitle = file.lastModifiedDate.toLocaleString().split(', ').join(' - ');
 
         isLoading = !0;
         mainContent.classList.add("loading-archive");
         
+        titleDesc.innerText = `Última modificação: ${descTitle}`;
         headerTitle.innerText = fileName;
+        
+        console.log(file);
 
         var ifcURL = URL.createObjectURL(file);
 
@@ -73,7 +78,6 @@ function renderFile(file) {
 
         isLoading = !1;
         console.log(ifcModel);
-        console.log(file);
         originLeftSidebar.classList.remove("hidden");
         mainContent.classList.remove("loading-archive");
         mainContent.classList.remove("no-archive");

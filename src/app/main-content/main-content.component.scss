@@ -96,11 +96,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     font-size: 1.5em;
-    padding: 1em;
 
     .file-button {
+        margin: 1em;
         --sec-color: #eee;
         border-color: var(--sec-color);
 
