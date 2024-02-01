@@ -90,7 +90,7 @@ function renderFile(file) {
 
         mainMesh.appendChild(innerMesh);
         leftSidebar.appendChild(mainMesh);
-        console.log(mesh.name);
+        console.log(mesh.ifcManager);
     };
 };
 
