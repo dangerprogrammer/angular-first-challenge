@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +10,7 @@
 
 body {
     min-height: 100vh;
+    font-family: Poppins;
 }
 
 .main-page {
@@ -18,4 +21,10 @@ body {
     width: 100vw;
     background: #111;
     color: #eee;
+}
+
+.icon {
+    height: 1em;
+    width: 1em;
+    fill: currentColor;
 }

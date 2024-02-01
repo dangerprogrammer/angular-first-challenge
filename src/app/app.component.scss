@@ -10,7 +10,6 @@
     width: 100vw;
     
     > * {
-        padding: 1em;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -18,17 +17,19 @@
     }
 
     app-header {
+        padding: 1em;
         grid-area: header;
     }
 
     left-sidebar {
+        padding: 1em;
         grid-area: left-sidebar;
         min-width: max(15em, 15vw);
     }
 
     main-content {
         grid-area: main;
-        border-top-left-radius: 1em;
+        border-top-left-radius: 2.5rem;
         background: #33333caa;
     }
 }

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 
 class MainContentComponent {
-
+  loadingText = 'Loading...'.split('');
 }
 
 export { MainContentComponent };

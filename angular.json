@@ -39,7 +39,8 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "./bundle.js"
+              "./bundle.js",
+              "./render.js"
             ],
             "server": "src/main.server.ts",
             "prerender": true,
