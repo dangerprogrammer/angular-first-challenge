@@ -25,13 +25,47 @@
     }
 }
 
+.drag-archive, .loading {
+    position: absolute;
+    inset: 0;
+    user-select: none;
+    z-index: 100;
+    display: flex;
+    font-size: 3em;
+    background: #000a;
+}
+
+.drag-archive {
+    pointer-events: none;
+    opacity: 0;
+    padding: 1rem;
+    transition: .2s ease-in-out;
+
+    div {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        inset: 0;
+        border: .4rem dashed var(--color);
+        border-radius: 2rem;
+        padding: 1em;
+    }
+
+    &.drag-hover {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
 .input-file-container {
     position: relative;
     font-size: 1.4em;
     flex-grow: 1;
     inset: 0;
     display: flex;
-    padding: 1em;
+    padding: 1rem;
 
     .drag-over {
         user-select: none;
@@ -43,8 +77,7 @@
         justify-content: center;
         text-align: center;
         flex-grow: 1;
-        border: .1em dashed var(--color);
-        inset: 0;
+        border: .4rem dashed var(--color);
         border-radius: 2rem;
         padding: 1em;
         overflow: hidden;
@@ -126,16 +159,11 @@
 }
 
 .loading {
-    user-select: none;
-    position: absolute;
-    inset: 0;
+    font-family: 'Roboto Mono';
     background: #000a;
-    display: flex;
+    transition: opacity 1s ease-in-out;
     align-items: center;
     justify-content: center;
-    font-family: 'Roboto Mono';
-    font-size: 3em;
-    transition: opacity 1s ease-in-out;
 
     span {
         animation: animateLoading 2s calc(var(--delay) * .1s) infinite;

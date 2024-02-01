@@ -1,6 +1,9 @@
 <main [className]="'main-content no-archive'">
+  <section [className]="'drag-archive'">
+    <div>Drop file</div>
+  </section>
   <section [className]="'input-file-container'">
-    <div [className]="'drag-over'">
+    <div [className]="'drag-over'" draggable>
       <span>Solte aqui um arquivo<br>ou<br></span>
       <input type="file" name="load" id="file-input" accept=".ifc" hidden />
       <label for="file-input" [className]="'file-button'">
