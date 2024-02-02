@@ -108,9 +108,9 @@ body {
                     padding: .3em .5em;
                     line-height: 1em;
                     border-radius: .25em;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                     width: 100%;
                     color: var(--mesh-color);
                     background-color: var(--mesh-bg-color);
