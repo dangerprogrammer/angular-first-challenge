@@ -32,6 +32,8 @@ body {
 .main-mesh {
     width: 100%;
     max-width: 20em;
+    min-width: 15em;
+    padding-right: 1em;
 
     &:not(.active) {
         .mesh-container {
@@ -106,4 +108,19 @@ body {
             }
         }
     }
+}
+
+::-webkit-scrollbar {
+    width: .65em;
+    margin-left: 1em;
+}
+
+::-webkit-scrollbar-track {
+    background: #090909;
+    border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 2em;
 }

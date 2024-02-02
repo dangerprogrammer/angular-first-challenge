@@ -107,8 +107,8 @@ function renderFile(file) {
         meshContainer.append(meshID, meshColor);
         mainMesh.append(meshTitle, meshContainer);
         leftSidebar.appendChild(mainMesh);
-        // const { name } = mesh;
-        // console.log("name: ", name);
+        // const { version } = mesh;
+        // console.log("version: ", version);
         console.log(mesh);
     };
 };
