@@ -43,6 +43,10 @@ body {
         .mesh-container {
             display: flex;
         }
+
+        .mesh-title {
+            pointer-events: none;
+        }
     }
 
     .mesh-title {
