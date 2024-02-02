@@ -20,9 +20,11 @@ addEventListener("dragover", ev => {
     if (!isLoading) dragArchive.classList.add("drag-hover");
 });
 
-addEventListener("dragend", ev => dragArchive.classList.remove("drag-hover"));
+addEventListener("dragend", () => dragArchive.classList.remove("drag-hover"));
 
 addEventListener("mouseout", () => dragArchive.classList.remove("drag-hover"));
+
+addEventListener("drop", ev => ev.preventDefault());
 
 mainContent.addEventListener("drop", ev => {
     ev.preventDefault();
@@ -75,11 +77,11 @@ function renderFile(file) {
     };
 
     function loadFile(ifcModel) {
-
         scene.add(ifcModel);
 
         isLoading = !1;
 
+        console.log(ifcModel);
         ifcModel.material.forEach(generateMesh);
 
         originLeftSidebar.classList.remove("hidden");
@@ -101,7 +103,7 @@ function renderFile(file) {
         const meshColorTitle = createElement('div', { className: 'inner-mesh-title', innerText: 'Color: ' });
         const meshColorContent = createElement('div', { className: 'inner-mesh-content' });
 
-        const { color: { r, g, b }, opacity } = mesh, RGB = `rgba(${(r * 255).toFixed(0)}, ${(g * 255).toFixed(0)}, ${(b * 255).toFixed(0)}, ${opacity.toFixed(2)})`, iRGB = (r + g + b) < (3 / 2) ? 'white' : 'black';
+        const { color: { r, g, b }, opacity } = mesh, RGB = `rgba(${(r * 255).toFixed(0)}, ${(g * 255).toFixed(0)}, ${(b * 255).toFixed(0)}, ${opacity.toFixed(2)})`, iRGB = (r + g + b) * opacity < (3 / 2) ? 'white' : 'black';
 
         if (ind == 0) mainMesh.classList.add("active");
         meshTitle.addEventListener("click", () => toggleActiveMesh(mainMesh), false);
