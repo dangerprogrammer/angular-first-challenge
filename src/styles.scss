@@ -28,3 +28,52 @@ body {
     width: 1em;
     fill: currentColor;
 }
+
+.main-mesh {
+    width: 100%;
+    max-width: 20em;
+
+    &:not(.active) {
+        .mesh-container {
+            display: none;
+        }
+    }
+
+    &.active {
+        .mesh-container {
+            display: flex;
+        }
+    }
+
+    .mesh-title {
+        background: #222a;
+        padding: .2em 1em;
+        border-radius: .5em;
+        font-weight: 700;
+        user-select: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: .2s ease-in-out;
+
+        &:hover {
+            background: #333a;
+        }
+    }
+
+    .mesh-container {
+        flex-direction: column;
+        background: red;
+        margin-left: 1em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        .inner-mesh {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}

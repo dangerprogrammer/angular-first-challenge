@@ -40,7 +40,6 @@
             ],
             "scripts": [
               "./bundle.js",
-              "./bundle2.js",
               "./render.js"
             ],
             "server": "src/main.server.ts",

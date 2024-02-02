@@ -86,11 +86,16 @@ function renderFile(file) {
 
     function generateMesh(mesh, ind) {
         const mainMesh = createElement('div', { className: 'main-mesh' });
+        const meshTitle = createElement('div', { className: 'mesh-title', innerText: `Mesh ${ind + 1}`});
+        const meshContainer = createElement('div', { className: 'mesh-container' });
         const innerMesh = createElement('div', { className: 'inner-mesh', innerText: mesh.uuid });
 
-        mainMesh.appendChild(innerMesh);
+        meshTitle.addEventListener("click", () => mainMesh.classList.toggle("active"), false);
+
+        meshContainer.append(innerMesh);
+        mainMesh.append(meshTitle, meshContainer);
         leftSidebar.appendChild(mainMesh);
-        console.log(mesh.ifcManager);
+        console.log(mesh);
     };
 };
 
