@@ -95,7 +95,7 @@ function renderFile(file) {
         const meshColorTitle = createElement('div', { className: 'inner-mesh-title', innerText: 'Color: ' });
         const meshColorContent = createElement('div', { className: 'inner-mesh-content' });
 
-        const { color } = mesh, { r, g, b } = color, RGB = `rgb(${r * 255}, ${g * 255}, ${b * 255})`;
+        const { color: { r, g, b } } = mesh, RGB = `rgb(${r * 255}, ${g * 255}, ${b * 255})`;
 
         if (ind == 0) mainMesh.classList.add("active");
         meshTitle.addEventListener("click", () => toggleActiveMesh(mainMesh), false);
@@ -107,7 +107,7 @@ function renderFile(file) {
         meshContainer.append(meshID, meshColor);
         mainMesh.append(meshTitle, meshContainer);
         leftSidebar.appendChild(mainMesh);
-        console.log(RGB);
+        console.log("modelID:", );
     };
 };
 
