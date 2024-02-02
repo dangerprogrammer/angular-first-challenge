@@ -97,12 +97,13 @@ function renderFile(file) {
         const meshColorTitle = createElement('div', { className: 'inner-mesh-title', innerText: 'Color: ' });
         const meshColorContent = createElement('div', { className: 'inner-mesh-content' });
 
-        const { color: { r, g, b }, opacity } = mesh, RGB = `rgba(${r * 255}, ${g * 255}, ${b * 255}, ${opacity})`;
+        const { color: { r, g, b }, opacity } = mesh, RGB = `rgba(${r * 255}, ${g * 255}, ${b * 255}, ${opacity})`, iRGB = `rgb(${(1 - r) * 255}, ${(1 - g) * 255}, ${(1 - b) * 255})`;
 
         if (ind == 0) mainMesh.classList.add("active");
         meshTitle.addEventListener("click", () => toggleActiveMesh(mainMesh), false);
 
-        meshColor.style.setProperty("--mesh-color", RGB);
+        meshColor.style.setProperty("--mesh-bg-color", RGB);
+        meshColor.style.setProperty("--mesh-color", iRGB);
 
         meshTitle.append(meshMainTitle, meshTitleIcon);
         meshColor.append(meshColorTitle, meshColorContent);
@@ -110,9 +111,6 @@ function renderFile(file) {
         meshContainer.append(meshID, meshColor);
         mainMesh.append(meshTitle, meshContainer);
         leftSidebar.appendChild(mainMesh);
-        // const { version } = mesh;
-        // console.log("version: ", version);
-        console.log(mesh);
     };
 };
 
