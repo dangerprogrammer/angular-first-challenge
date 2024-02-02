@@ -81,6 +81,7 @@ function renderFile(file) {
 
         isLoading = !1;
 
+        window.ifcModel = ifcModel;
         console.log(ifcModel);
         ifcModel.material.forEach(generateMesh);
 
