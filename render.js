@@ -9,6 +9,10 @@ const titleDesc = document.querySelector('#desc-title');
 const originLeftSidebar = document.querySelector('left-sidebar');
 const leftSidebar = document.querySelector('.left-sidebar');
 
+Number.prototype.toFixed = function (chars) {
+    return Math.round(this * (10 ** chars)) / (10 ** chars);
+};
+
 let isLoading = !1;
 addEventListener("dragover", ev => {
     ev.preventDefault();
@@ -61,7 +65,7 @@ function renderFile(file) {
 
         isLoading = !0;
         mainContent.classList.add("loading-archive");
-        
+
         titleDesc.innerText = `Última modificação: ${descTitle}`;
         headerTitle.innerText = fileName;
 
@@ -75,7 +79,7 @@ function renderFile(file) {
         scene.add(ifcModel);
 
         isLoading = !1;
-        
+
         ifcModel.material.forEach(generateMesh);
 
         originLeftSidebar.classList.remove("hidden");
@@ -86,8 +90,8 @@ function renderFile(file) {
 
     function generateMesh(mesh, ind) {
         const mainMesh = createElement('div', { className: 'main-mesh', id: `mesh-${ind}` });
-        const meshTitle = createElement('div', { className: 'mesh-title'});
-        const meshMainTitle = createElement('span', { innerText: `Mesh ${ind + 1}` }); 
+        const meshTitle = createElement('div', { className: 'mesh-title' });
+        const meshMainTitle = createElement('span', { innerText: `Mesh ${ind + 1}` });
         const meshTitleIcon = createElement('div', { className: 'title-icon', innerHTML: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"/></svg>' });
         const meshContainer = createElement('div', { className: 'mesh-container' });
         const meshID = createElement('div', { className: 'inner-mesh mesh-id' });
@@ -97,13 +101,15 @@ function renderFile(file) {
         const meshColorTitle = createElement('div', { className: 'inner-mesh-title', innerText: 'Color: ' });
         const meshColorContent = createElement('div', { className: 'inner-mesh-content' });
 
-        const { color: { r, g, b }, opacity } = mesh, RGB = `rgba(${r * 255}, ${g * 255}, ${b * 255}, ${opacity})`, iRGB = `rgb(${(1 - r) * 255}, ${(1 - g) * 255}, ${(1 - b) * 255})`;
+        const { color: { r, g, b }, opacity } = mesh, RGB = `rgba(${(r * 255).toFixed(0)}, ${(g * 255).toFixed(0)}, ${(b * 255).toFixed(0)}, ${opacity.toFixed(2)})`, iRGB = (r + g + b) < (3 / 2) ? 'white' : 'black';
 
         if (ind == 0) mainMesh.classList.add("active");
         meshTitle.addEventListener("click", () => toggleActiveMesh(mainMesh), false);
 
         meshColor.style.setProperty("--mesh-bg-color", RGB);
         meshColor.style.setProperty("--mesh-color", iRGB);
+
+        meshColorContent.innerText = RGB;
 
         meshTitle.append(meshMainTitle, meshTitleIcon);
         meshColor.append(meshColorTitle, meshColorContent);
