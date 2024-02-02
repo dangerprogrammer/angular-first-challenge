@@ -64,16 +64,42 @@ body {
 
     .mesh-container {
         flex-direction: column;
-        background: red;
-        margin-left: 1em;
         overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        padding-inline: 1em;
+        margin-inline: 1em;
+        background: #181818;
+        border-bottom-left-radius: .5em;
+        border-bottom-right-radius: .5em;
 
         .inner-mesh {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            display: flex;
+            flex-direction: row;
+            gap: .5em;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            &.mesh-color {
+                .inner-mesh-content {
+                    height: 1em;
+                    border-radius: .25em;
+                    width: 100%;
+                    background-color: var(--mesh-color);
+                }
+            }
+
+            &.mesh-id {
+                .inner-mesh-content {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: .8em;
+                }
+            }
+
+            .inner-mesh-title {
+                font-weight: 700;
+            }
         }
     }
 }

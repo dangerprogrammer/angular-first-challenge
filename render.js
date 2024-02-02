@@ -20,7 +20,7 @@ addEventListener("dragend", ev => dragArchive.classList.remove("drag-hover"));
 
 addEventListener("mouseout", () => dragArchive.classList.remove("drag-hover"));
 
-addEventListener("drop", ev => {
+mainContent.addEventListener("drop", ev => {
     ev.preventDefault();
 
     dragArchive.classList.remove("drag-hover");
@@ -85,18 +85,40 @@ function renderFile(file) {
     };
 
     function generateMesh(mesh, ind) {
-        const mainMesh = createElement('div', { className: 'main-mesh' });
+        const mainMesh = createElement('div', { className: 'main-mesh', id: `mesh-${ind}` });
         const meshTitle = createElement('div', { className: 'mesh-title', innerText: `Mesh ${ind + 1}`});
         const meshContainer = createElement('div', { className: 'mesh-container' });
-        const innerMesh = createElement('div', { className: 'inner-mesh', innerText: mesh.uuid });
+        const meshID = createElement('div', { className: 'inner-mesh mesh-id' });
+        const meshIDTitle = createElement('div', { className: 'inner-mesh-title', innerText: 'ID: ' });
+        const meshIDContent = createElement('div', { className: 'inner-mesh-content', innerText: mesh.uuid });
+        const meshColor = createElement('div', { className: 'inner-mesh mesh-color' });
+        const meshColorTitle = createElement('div', { className: 'inner-mesh-title', innerText: 'Color: ' });
+        const meshColorContent = createElement('div', { className: 'inner-mesh-content' });
 
-        meshTitle.addEventListener("click", () => mainMesh.classList.toggle("active"), false);
+        const { color } = mesh, { r, g, b } = color, RGB = `rgb(${r * 255}, ${g * 255}, ${b * 255})`;
 
-        meshContainer.append(innerMesh);
+        if (ind == 0) mainMesh.classList.add("active");
+        meshTitle.addEventListener("click", () => toggleActiveMesh(mainMesh), false);
+
+        meshColor.style.setProperty("--mesh-color", RGB);
+
+        meshColor.append(meshColorTitle, meshColorContent);
+        meshID.append(meshIDTitle, meshIDContent);
+        meshContainer.append(meshID, meshColor);
         mainMesh.append(meshTitle, meshContainer);
         leftSidebar.appendChild(mainMesh);
-        console.log(mesh);
+        console.log(RGB);
     };
+};
+
+function toggleActiveMesh(mainMesh) {
+    const { parentElement, id: mainID } = mainMesh, { children: childrens } = parentElement;
+
+    mainMesh.classList.toggle("active");
+
+    const siblings = [...childrens].filter(({ id }) => id !== mainID);
+
+    siblings.forEach(sibling => sibling.classList.remove("active"));
 };
 
 function createElement(elem, attr) {
