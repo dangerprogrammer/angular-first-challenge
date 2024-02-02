@@ -86,7 +86,9 @@ function renderFile(file) {
 
     function generateMesh(mesh, ind) {
         const mainMesh = createElement('div', { className: 'main-mesh', id: `mesh-${ind}` });
-        const meshTitle = createElement('div', { className: 'mesh-title', innerText: `Mesh ${ind + 1}`});
+        const meshTitle = createElement('div', { className: 'mesh-title'});
+        const meshMainTitle = createElement('span', { innerText: `Mesh ${ind + 1}` }); 
+        const meshTitleIcon = createElement('div', { className: 'title-icon', innerHTML: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"/></svg>' });
         const meshContainer = createElement('div', { className: 'mesh-container' });
         const meshID = createElement('div', { className: 'inner-mesh mesh-id' });
         const meshIDTitle = createElement('div', { className: 'inner-mesh-title', innerText: 'ID: ' });
@@ -102,6 +104,7 @@ function renderFile(file) {
 
         meshColor.style.setProperty("--mesh-color", RGB);
 
+        meshTitle.append(meshMainTitle, meshTitleIcon);
         meshColor.append(meshColorTitle, meshColorContent);
         meshID.append(meshIDTitle, meshIDContent);
         meshContainer.append(meshID, meshColor);

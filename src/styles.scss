@@ -48,6 +48,10 @@ body {
 
         .mesh-title {
             pointer-events: none;
+
+            .title-icon {
+                transform: rotate(90deg);
+            }
         }
     }
 
@@ -65,6 +69,22 @@ body {
 
         &:hover {
             background: #333a;
+        }
+
+        .title-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            height: 1em;
+            width: 1em;
+            transition: transform .2s ease-in-out;
+
+            ion-icon {
+                height: 1em;
+                width: 1em;
+                fill: currentColor;
+            }
         }
     }
 
