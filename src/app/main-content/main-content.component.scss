@@ -116,6 +116,7 @@
     .canvas {
         position: relative;
         inset: 0;
+        flex-grow: 1;
 
         canvas {
             position: relative;

@@ -46,6 +46,8 @@ body {
 
         .mesh-title {
             pointer-events: none;
+            border-bottom-left-radius: 0em;
+            border-bottom-right-radius: 0em;
 
             .title-icon {
                 transform: rotate(90deg);
@@ -90,7 +92,6 @@ body {
         flex-direction: column;
         overflow: hidden;
         padding-inline: 1em;
-        margin-inline: 1em;
         background: #181818;
         border-bottom-left-radius: .5em;
         border-bottom-right-radius: .5em;
@@ -98,6 +99,7 @@ body {
         .inner-mesh {
             display: flex;
             flex-direction: row;
+            padding-block: .2em;
             gap: .5em;
             align-items: center;
             justify-content: space-between;
